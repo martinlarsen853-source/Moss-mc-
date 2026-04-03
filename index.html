@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Moss MC – Motorsykkelklubb i Moss, Norge. Fellesskap, frihet og lidenskap for veien." />
+  <title>Moss MC</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <!-- NAVIGATION -->
+  <nav class="nav" id="nav">
+    <div class="nav__inner">
+      <a href="#hero" class="nav__logo">
+        <span class="nav__logo-text">MOSS</span>
+        <span class="nav__logo-mc">MC</span>
+      </a>
+      <ul class="nav__links" id="navLinks">
+        <li><a href="#om-oss" class="nav__link">Om oss</a></li>
+        <li><a href="#bli-medlem" class="nav__link">Bli medlem</a></li>
+        <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+      </ul>
+      <button class="nav__hamburger" id="hamburger" aria-label="Åpne meny" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero__bg"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <p class="hero__eyebrow reveal">Moss, Norge — Est. 1972</p>
+      <h1 class="hero__title reveal">
+        BRODER&shy;SKAP<br />PÅ TO <span class="gold">HJUL</span>
+      </h1>
+      <p class="hero__subtitle reveal">
+        Vi er ikke bare en klubb. Vi er et fellesskap av mennesker som deler<br class="hide-mobile" />
+        lidenskap for frihet, veien og hverandre.
+      </p>
+      <div class="hero__actions reveal">
+        <a href="#bli-medlem" class="btn btn--primary">Bli medlem</a>
+        <a href="#om-oss" class="btn btn--ghost">Les mer</a>
+      </div>
+    </div>
+    <div class="hero__scroll-indicator">
+      <span></span>
+    </div>
+  </section>
+
+  <!-- STATS BANNER -->
+  <section class="stats">
+    <div class="container">
+      <div class="stats__grid">
+        <div class="stat reveal">
+          <span class="stat__number">50+</span>
+          <span class="stat__label">Aktive medlemmer</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat reveal">
+          <span class="stat__number">52</span>
+          <span class="stat__label">År på veien</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat reveal">
+          <span class="stat__number">100+</span>
+          <span class="stat__label">Turer i året</span>
+        </div>
+        <div class="stat__divider"></div>
+        <div class="stat reveal">
+          <span class="stat__number">1</span>
+          <span class="stat__label">Broderskapets hjem</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OM OSS -->
+  <section class="section om-oss" id="om-oss">
+    <div class="container">
+      <div class="om-oss__grid">
+        <div class="om-oss__visual reveal">
+          <div class="om-oss__emblem">
+            <div class="emblem__ring"></div>
+            <div class="emblem__inner">
+              <span class="emblem__top">MOSS</span>
+              <span class="emblem__mc">MC</span>
+              <span class="emblem__bottom">NORGE</span>
+            </div>
+          </div>
+          <div class="om-oss__badge reveal">
+            <span>Siden 1972</span>
+          </div>
+        </div>
+        <div class="om-oss__text">
+          <p class="section__eyebrow reveal">Vår historie</p>
+          <h2 class="section__title reveal">
+            Mer enn<br /><span class="gold">en klubb</span>
+          </h2>
+          <div class="divider reveal"></div>
+          <p class="om-oss__body reveal">
+            Moss MC ble stiftet i 1972 av en gruppe lidenskapelige motorsykkelentusiaster som ønsket å skape et fellesskap basert på respekt, lojalitet og kjærligheten til veien.
+          </p>
+          <p class="om-oss__body reveal">
+            Gjennom mer enn fem tiår har vi vokst til å bli en av de mest respekterte MC-klubbene på Østlandet. Vi arrangerer turer, sosiale sammenkomster og er aktive bidragsytere i lokalmiljøet i Moss.
+          </p>
+          <ul class="om-oss__values reveal">
+            <li>
+              <span class="value__icon">◆</span>
+              <span><strong>Lojalitet</strong> – Vi stiller opp for hverandre</span>
+            </li>
+            <li>
+              <span class="value__icon">◆</span>
+              <span><strong>Respekt</strong> – For veien, for kjøretøyet, for brødrene</span>
+            </li>
+            <li>
+              <span class="value__icon">◆</span>
+              <span><strong>Frihet</strong> – Det åpne veien representerer</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SITAT -->
+  <section class="quote-section">
+    <div class="container">
+      <blockquote class="quote reveal">
+        <p class="quote__text">
+          "Fire hjul beveger kroppen.<br />To hjul beveger sjelen."
+        </p>
+        <cite class="quote__cite">— Moss MC</cite>
+      </blockquote>
+    </div>
+  </section>
+
+  <!-- BLI MEDLEM -->
+  <section class="section bli-medlem" id="bli-medlem">
+    <div class="container">
+      <div class="section__header text-center">
+        <p class="section__eyebrow reveal">Veien inn</p>
+        <h2 class="section__title reveal">Bli en av oss</h2>
+        <div class="divider divider--center reveal"></div>
+        <p class="section__intro reveal">
+          Vi ser etter mennesker som deler våre verdier. Prosessen er enkel,<br class="hide-mobile" />
+          men fellesskapet varer livet ut.
+        </p>
+      </div>
+      <div class="steps reveal">
+        <div class="step">
+          <div class="step__number">01</div>
+          <div class="step__content">
+            <h3 class="step__title">Ta kontakt</h3>
+            <p class="step__desc">Send oss en melding eller møt opp på et av våre arrangementer. Fortell oss hvem du er og hva som driver deg.</p>
+          </div>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <div class="step__number">02</div>
+          <div class="step__content">
+            <h3 class="step__title">Bli kjent</h3>
+            <p class="step__desc">Du inviteres til klubbtreff og turer som prøvemedlem. Vi lærer hverandre å kjenne uten press.</p>
+          </div>
+        </div>
+        <div class="step__arrow">→</div>
+        <div class="step">
+          <div class="step__number">03</div>
+          <div class="step__content">
+            <h3 class="step__title">Velkommen inn</h3>
+            <p class="step__desc">Etter en prøveperiode og godkjenning av klubben tas du opp som fullverdig medlem av Moss MC.</p>
+          </div>
+        </div>
+      </div>
+      <div class="text-center reveal">
+        <a href="#kontakt" class="btn btn--primary btn--large">Send søknad</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- KONTAKT -->
+  <section class="section kontakt" id="kontakt">
+    <div class="container">
+      <div class="kontakt__grid">
+        <div class="kontakt__info">
+          <p class="section__eyebrow reveal">Kom i kontakt</p>
+          <h2 class="section__title reveal">La oss høre fra deg</h2>
+          <div class="divider reveal"></div>
+          <p class="kontakt__text reveal">
+            Har du spørsmål om klubben, ønsker å bli med, eller bare vil si hei? Vi svarer alltid.
+          </p>
+          <ul class="kontakt__details reveal">
+            <li>
+              <span class="kontakt__icon">◈</span>
+              <span>Moss, Viken, Norge</span>
+            </li>
+            <li>
+              <span class="kontakt__icon">◈</span>
+              <a href="mailto:post@moss.mc.no">post@moss.mc.no</a>
+            </li>
+          </ul>
+        </div>
+        <form class="kontakt__form reveal" id="contactForm" novalidate>
+          <div class="form__group">
+            <label for="navn" class="form__label">Navn</label>
+            <input type="text" id="navn" name="navn" class="form__input" placeholder="Ditt navn" required />
+          </div>
+          <div class="form__group">
+            <label for="epost" class="form__label">E-post</label>
+            <input type="email" id="epost" name="epost" class="form__input" placeholder="din@epost.no" required />
+          </div>
+          <div class="form__group">
+            <label for="melding" class="form__label">Melding</label>
+            <textarea id="melding" name="melding" class="form__input form__textarea" placeholder="Hva vil du si?" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn--primary btn--full">Send melding</button>
+          <p class="form__success" id="formSuccess">Takk! Vi tar kontakt snart.</p>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__top">
+        <a href="#hero" class="footer__logo">
+          <span class="nav__logo-text">MOSS</span>
+          <span class="nav__logo-mc">MC</span>
+        </a>
+        <nav class="footer__nav" aria-label="Footer navigasjon">
+          <a href="#om-oss" class="footer__link">Om oss</a>
+          <a href="#bli-medlem" class="footer__link">Bli medlem</a>
+          <a href="#kontakt" class="footer__link">Kontakt</a>
+        </nav>
+      </div>
+      <div class="footer__divider"></div>
+      <div class="footer__bottom">
+        <p class="footer__copy">&copy; 2024 Moss MC. Alle rettigheter forbeholdt.</p>
+        <p class="footer__tagline">Brødreskap på to hjul.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
