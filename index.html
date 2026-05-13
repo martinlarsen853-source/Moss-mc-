@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ombudsmann — En stemme for hver enkelt</title>
-<meta name="description" content="Ombudsmannen — uavhengig, lyttende, til for deg. Send inn saker og forslag direkte.">
+<title>Thomas Idem — Ombudsmann</title>
+<meta name="description" content="Thomas Idem er din ombudsmann — uavhengig, lyttende, til for deg. Send inn saker og forslag direkte.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght,SOFT,WONK@9..144,300..900,0..100,0..1&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -30,7 +30,6 @@
     --shadow-sm: 0 2px 8px rgba(10, 29, 51, 0.06);
     --shadow-md: 0 8px 30px rgba(10, 29, 51, 0.1);
     --shadow-lg: 0 24px 60px rgba(10, 29, 51, 0.15);
-    --shadow-xl: 0 40px 100px rgba(10, 29, 51, 0.22);
     --ease: cubic-bezier(0.4, 0, 0.2, 1);
     --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
   }
@@ -38,16 +37,18 @@
   html { scroll-behavior: smooth; }
   body { font-family: 'Inter', -apple-system, sans-serif; background: var(--cream-50); color: var(--ink); line-height: 1.65; -webkit-font-smoothing: antialiased; overflow-x: hidden; }
   .nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; padding: 1.25rem 2.5rem; display: flex; align-items: center; justify-content: space-between; transition: all 0.4s var(--ease); background: transparent; }
-  .nav.scrolled { background: rgba(253,252,248,0.85); backdrop-filter: blur(20px); padding: 0.85rem 2.5rem; border-bottom: 1px solid var(--line); }
-  .nav-brand { display: flex; align-items: center; gap: 0.7rem; font-family: 'Fraunces', serif; font-weight: 600; font-size: 1.15rem; color: var(--navy-900); text-decoration: none; }
-  .nav-brand-mark { width: 32px; height: 32px; background: var(--navy-800); border-radius: 50%; display: flex; align-items: center; justify-content: center; }
-  .nav-brand-mark::before { content: ""; width: 8px; height: 8px; background: var(--cream-100); border-radius: 50%; }
+  .nav.scrolled { background: rgba(253,252,248,0.9); backdrop-filter: blur(20px); padding: 0.85rem 2.5rem; border-bottom: 1px solid var(--line); }
+  .nav-brand { display: flex; align-items: center; gap: 0.75rem; text-decoration: none; }
+  .nav-logo { width: 36px; height: 36px; }
+  .nav-brand-text { display: flex; flex-direction: column; }
+  .nav-brand-name { font-family: 'Fraunces', serif; font-weight: 600; font-size: 1rem; color: var(--navy-900); line-height: 1.1; letter-spacing: -0.01em; }
+  .nav-brand-role { font-family: 'JetBrains Mono', monospace; font-size: 0.65rem; color: var(--gold); letter-spacing: 0.12em; text-transform: uppercase; }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { color: var(--ink-soft); text-decoration: none; font-size: 0.9rem; font-weight: 500; transition: color 0.2s; }
   .nav-links a:hover { color: var(--navy-900); }
   .nav-cta { background: var(--navy-900); color: var(--cream-50); padding: 0.6rem 1.3rem; border-radius: 100px; text-decoration: none; font-size: 0.85rem; font-weight: 500; transition: all 0.3s var(--ease); }
   .nav-cta:hover { background: var(--navy-700); transform: translateY(-1px); }
-  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 8rem 2.5rem 6rem; overflow: hidden; background: radial-gradient(ellipse 80% 50% at 20% 0%, rgba(184,146,74,0.12), transparent), linear-gradient(180deg, var(--cream-50) 0%, var(--cream-100) 100%); }
+  .hero { min-height: 100vh; display: flex; align-items: center; position: relative; padding: 8rem 2.5rem 6rem; overflow: hidden; background: radial-gradient(ellipse 80% 50% at 20% 0%, rgba(184,146,74,0.1), transparent), linear-gradient(180deg, var(--cream-50) 0%, var(--cream-100) 100%); }
   .hero-grid { max-width: 1400px; margin: 0 auto; display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: center; width: 100%; position: relative; z-index: 2; }
   .hero-eyebrow { display: inline-flex; align-items: center; gap: 0.6rem; font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: var(--gold); letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 1.5rem; opacity: 0; animation: fadeUp 1s var(--ease-out) 0.2s forwards; }
   .hero-eyebrow::before { content: ""; width: 24px; height: 1px; background: var(--gold); }
@@ -57,14 +58,14 @@
   .hero-line:nth-child(1) { animation-delay: 0.3s; }
   .hero-line:nth-child(2) { animation-delay: 0.45s; }
   .hero-lede { font-size: 1.15rem; color: var(--ink-soft); max-width: 480px; margin-bottom: 2.5rem; opacity: 0; animation: fadeUp 1s var(--ease-out) 0.8s forwards; }
+  .hero-lede strong { color: var(--navy-900); font-weight: 600; }
   .hero-actions { display: flex; gap: 1rem; align-items: center; flex-wrap: wrap; opacity: 0; animation: fadeUp 1s var(--ease-out) 1s forwards; }
   .btn-primary { background: var(--navy-900); color: var(--cream-50); padding: 1rem 2rem; border-radius: 100px; text-decoration: none; font-weight: 500; transition: all 0.3s var(--ease); display: inline-flex; align-items: center; gap: 0.7rem; border: none; cursor: pointer; font-family: inherit; font-size: 0.95rem; box-shadow: 0 4px 14px rgba(10,29,51,0.25); }
   .btn-primary:hover { background: var(--navy-700); transform: translateY(-2px); }
   .btn-secondary { color: var(--navy-900); text-decoration: none; font-weight: 500; font-size: 0.95rem; padding: 1rem; display: inline-flex; align-items: center; gap: 0.5rem; border-bottom: 1px solid transparent; transition: border-color 0.3s; }
   .btn-secondary:hover { border-bottom-color: var(--navy-900); }
-  .hero-visual { position: relative; aspect-ratio: 1; max-width: 480px; margin-left: auto; opacity: 0; animation: fadeIn 1.5s var(--ease-out) 0.6s forwards; }
+  .hero-visual { position: relative; aspect-ratio: 1; max-width: 440px; margin-left: auto; opacity: 0; animation: fadeIn 1.5s var(--ease-out) 0.6s forwards; }
   .logo-stage { width: 100%; height: 100%; background: linear-gradient(135deg, var(--cream-100) 0%, var(--cream-200) 100%); border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 30px 80px rgba(10,29,51,0.15); animation: float 8s ease-in-out infinite; }
-  .logo-stage img { width: 60%; height: auto; }
   .orbit { position: absolute; inset: -8%; border: 1px solid var(--gold); border-radius: 50%; opacity: 0.4; animation: spin 30s linear infinite; }
   .orbit::before { content: ""; position: absolute; top: -4px; left: 50%; width: 8px; height: 8px; background: var(--gold); border-radius: 50%; }
   .orbit-2 { inset: -16%; border-color: var(--navy-500); opacity: 0.2; animation-duration: 50s; animation-direction: reverse; }
@@ -116,7 +117,6 @@
   .message-body { color: var(--ink); font-size: 0.95rem; line-height: 1.65; white-space: pre-wrap; word-wrap: break-word; }
   .composer { border-top: 1px solid var(--line); padding: 1.5rem; background: var(--cream-100); }
   .composer-row { display: grid; grid-template-columns: 1fr; gap: 0.85rem; }
-  .field { position: relative; }
   .field label { display: block; font-size: 0.72rem; font-weight: 600; color: var(--navy-700); text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.4rem; font-family: 'JetBrains Mono', monospace; }
   .field input[type="text"], .field textarea { width: 100%; padding: 0.85rem 1rem; border: 1px solid var(--line-strong); border-radius: 10px; font-family: inherit; font-size: 0.95rem; background: #fff; color: var(--ink); transition: all 0.3s; resize: none; }
   .field input[type="text"]:focus, .field textarea:focus { outline: none; border-color: var(--navy-700); box-shadow: 0 0 0 4px rgba(26,58,92,0.08); }
@@ -134,8 +134,8 @@
   .quote-attr { font-family: 'JetBrains Mono', monospace; font-size: 0.8rem; color: var(--gold-bright); letter-spacing: 0.15em; text-transform: uppercase; }
   .contact { background: var(--cream-100); padding: 6rem 2.5rem 2rem; }
   .contact-grid { max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: 1.5fr 1fr 1fr 1fr; gap: 4rem; padding-bottom: 4rem; border-bottom: 1px solid var(--line); }
-  .contact-brand-name { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 500; color: var(--navy-900); margin-bottom: 0.5rem; }
-  .contact-brand-tag { font-family: 'Fraunces', serif; font-style: italic; color: var(--ink-mute); margin-bottom: 1.5rem; }
+  .contact-brand-name { font-family: 'Fraunces', serif; font-size: 1.8rem; font-weight: 500; color: var(--navy-900); margin-bottom: 0.25rem; }
+  .contact-brand-role { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--gold); letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1.25rem; }
   .contact-block h4 { font-family: 'JetBrains Mono', monospace; font-size: 0.75rem; color: var(--navy-700); text-transform: uppercase; letter-spacing: 0.15em; margin-bottom: 1.2rem; font-weight: 600; }
   .contact-block p, .contact-block a { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.8; text-decoration: none; display: block; }
   .contact-block a:hover { color: var(--navy-900); }
@@ -149,8 +149,8 @@
   @keyframes pulse { 0% { box-shadow: 0 0 0 0 rgba(125,217,154,0.7); } 70% { box-shadow: 0 0 0 12px rgba(125,217,154,0); } 100% { box-shadow: 0 0 0 0 rgba(125,217,154,0); } }
   @keyframes messageIn { from { opacity: 0; transform: translateX(-10px); } to { opacity: 1; transform: translateX(0); } }
   @media (max-width: 960px) {
-    .nav-links { display: none; }
-    .hero { padding: 6rem 1.5rem 4rem; } .hero-grid { grid-template-columns: 1fr; gap: 3rem; } .hero-visual { max-width: 320px; margin: 0 auto; }
+    .nav { padding: 1rem 1.5rem; } .nav.scrolled { padding: 0.75rem 1.5rem; } .nav-links { display: none; }
+    .hero { padding: 6rem 1.5rem 4rem; } .hero-grid { grid-template-columns: 1fr; gap: 3rem; } .hero-visual { max-width: 300px; margin: 0 auto; }
     .section { padding: 5rem 1.5rem; } .process-grid { grid-template-columns: 1fr; } .chat-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .contact { padding: 4rem 1.5rem 2rem; } .contact-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
   }
@@ -162,46 +162,68 @@
 </style>
 </head>
 <body>
+
 <nav class="nav" id="nav">
-  <a href="#" class="nav-brand"><span class="nav-brand-mark"></span><span>Ombudsmann</span></a>
+  <a href="#" class="nav-brand">
+    <svg class="nav-logo" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="50" cy="50" r="47" fill="#0c2d5e"/>
+      <circle cx="50" cy="50" r="31" fill="white"/>
+      <circle cx="50" cy="36" r="11" fill="#0c2d5e"/>
+      <path d="M19 67 Q34 50 50 54 Q66 50 81 67 Z" fill="#0c2d5e"/>
+    </svg>
+    <div class="nav-brand-text">
+      <span class="nav-brand-name">Thomas Idem</span>
+      <span class="nav-brand-role">Ombudsmann</span>
+    </div>
+  </a>
   <ul class="nav-links">
-    <li><a href="#hvordan">Hvordan vi jobber</a></li>
+    <li><a href="#hvordan">Hvordan jeg jobber</a></li>
     <li><a href="#forslag">Send forslag</a></li>
     <li><a href="#kontakt">Kontakt</a></li>
   </ul>
   <a href="#forslag" class="nav-cta">Si din mening</a>
 </nav>
+
 <header class="hero">
   <div class="hero-grid">
     <div>
-      <div class="hero-eyebrow">Uavhengig · Lyttende · For deg</div>
-      <h1><span class="hero-line">En stemme</span><br><span class="hero-line">for hver <span class="accent">enkelt</span>.</span></h1>
-      <p class="hero-lede">Ombudsmannen er en uavhengig kanal for å løfte frem saker som betyr noe. Vi lytter, undersøker, og handler — slik at din stemme blir hørt der det teller.</p>
+      <div class="hero-eyebrow">Thomas Idem · Ombudsmann</div>
+      <h1>
+        <span class="hero-line">Din stemme</span><br>
+        <span class="hero-line">er viktig for <span class="accent">meg</span>.</span>
+      </h1>
+      <p class="hero-lede"><strong>Thomas Idem</strong> er din uavhengige ombudsmann — her for å lytte, undersøke, og handle på dine vegne. Ingen byråkrati. Bare direkte kontakt.</p>
       <div class="hero-actions">
-        <a href="#forslag" class="btn-primary">Send inn ditt forslag <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
-        <a href="#hvordan" class="btn-secondary">Slik jobber vi <span>↓</span></a>
+        <a href="#forslag" class="btn-primary">Send inn din sak <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></a>
+        <a href="#hvordan" class="btn-secondary">Slik jobber jeg <span>↓</span></a>
       </div>
       <div class="stats">
         <div><div class="stat-num" data-target="100">0%</div><div class="stat-label">Uavhengig</div></div>
         <div><div class="stat-num" data-target="24" data-suffix="t">0t</div><div class="stat-label">Responstid</div></div>
-        <div><div class="stat-num">Anonymt</div><div class="stat-label">På din side</div></div>
+        <div><div class="stat-num">Direkte</div><div class="stat-label">Til Thomas</div></div>
       </div>
     </div>
     <div class="hero-visual">
       <div class="orbit orbit-2"></div>
       <div class="orbit"></div>
       <div class="logo-stage">
-        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='45' fill='%230a1d33' opacity='0.15'/%3E%3Ctext x='50' y='65' font-size='50' text-anchor='middle' fill='%230a1d33' font-family='serif' font-style='italic'%3EO%3C/text%3E%3C/svg%3E" alt="Ombudsmann">
+        <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg" style="width:65%;height:auto;filter:drop-shadow(0 8px 24px rgba(10,29,51,0.2))">
+          <circle cx="50" cy="50" r="47" fill="#0c2d5e"/>
+          <circle cx="50" cy="50" r="31" fill="white"/>
+          <circle cx="50" cy="36" r="11" fill="#0c2d5e"/>
+          <path d="M19 67 Q34 50 50 54 Q66 50 81 67 Z" fill="#0c2d5e"/>
+        </svg>
       </div>
     </div>
   </div>
 </header>
+
 <section class="section process" id="hvordan">
   <div class="section-inner">
     <div class="reveal">
-      <div class="section-eyebrow">Slik jobber vi</div>
+      <div class="section-eyebrow">Slik jobber jeg</div>
       <h2 class="section-title">Tre steg fra <em>tanke</em> til handling.</h2>
-      <p class="section-lede">Hver innmelding behandles med samme grundighet — uavhengig av størrelse eller avsender.</p>
+      <p class="section-lede">Hver sak du sender inn behandler jeg personlig — med samme grundighet, uavhengig av størrelse eller hvem du er.</p>
     </div>
     <div class="process-grid reveal">
       <div class="process-card">
@@ -213,39 +235,49 @@
       <div class="process-card">
         <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
         <div class="process-num">— 02 —</div>
-        <h3>Vi undersøker</h3>
-        <p>Saken vurderes innenfor 24 timer. Vi henter inn nødvendig informasjon og holder deg orientert hele veien.</p>
+        <h3>Jeg undersøker</h3>
+        <p>Jeg vurderer saken personlig innenfor 24 timer. Henter inn nødvendig informasjon og holder deg orientert hele veien.</p>
       </div>
       <div class="process-card">
         <div class="process-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
         <div class="process-num">— 03 —</div>
         <h3>Det skjer noe</h3>
-        <p>Det kommer en konkret tilbakemelding eller anbefaling. Vi følger opp at saken faktisk blir håndtert — og at du får svar.</p>
+        <p>Du får en konkret tilbakemelding. Jeg følger opp at saken faktisk håndteres — og at du får det svaret du fortjener.</p>
       </div>
     </div>
   </div>
 </section>
+
 <section class="section chat-section" id="forslag">
   <div class="section-inner">
     <div class="chat-layout">
       <div class="chat-side reveal">
         <div class="section-eyebrow">Forslag &amp; saker</div>
         <h2>Si <em>det som må sies.</em></h2>
-        <p>Skriv inn forslag eller saker du ønsker at ombudsmannen tar opp. Alle innspill blir lest.</p>
+        <p>Skriv til meg direkte — forslag, saker eller det du ønsker jeg skal ta opp. Jeg leser alt personlig.</p>
         <ul class="guidelines">
           <li>Skriv klart og konkret — det hjelper saken videre</li>
-          <li>Hold tonen respektfull. Vi vil ha innhold, ikke konflikt</li>
+          <li>Hold tonen respektfull. Jeg vil ha innhold, ikke konflikt</li>
           <li>Dato og tid registreres automatisk for sporbarhet</li>
           <li>Alvorlige saker tas direkte — bruk kontaktinfo nederst</li>
         </ul>
       </div>
       <div class="chat-card reveal">
         <div class="chat-card-header">
-          <div class="chat-card-header-left"><span class="pulse-dot"></span><div><div class="chat-card-title">Åpen forslagskanal</div><div class="chat-card-subtitle">Live · Sanntid</div></div></div>
+          <div class="chat-card-header-left">
+            <span class="pulse-dot"></span>
+            <div>
+              <div class="chat-card-title">Skriv til Thomas</div>
+              <div class="chat-card-subtitle">Live · Sanntid</div>
+            </div>
+          </div>
           <div class="chat-count-badge" id="chatCount">0 innlegg</div>
         </div>
         <div class="messages" id="messages">
-          <div class="empty-state" id="emptyState"><div class="empty-state-mark">"</div><p>Ingen forslag enda.<br>Bli den første til å si din mening.</p></div>
+          <div class="empty-state" id="emptyState">
+            <div class="empty-state-mark">"</div>
+            <p>Ingen forslag enda.<br>Bli den første til å si din mening.</p>
+          </div>
         </div>
         <form class="composer" id="form">
           <div class="composer-row">
@@ -254,29 +286,52 @@
           </div>
           <div class="composer-footer">
             <span class="char-count"><span id="charCount">0</span> / 2000</span>
-            <button type="submit" class="submit-btn">Send inn <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
+            <button type="submit" class="submit-btn">Send til Thomas <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg></button>
           </div>
         </form>
       </div>
     </div>
   </div>
 </section>
+
 <section class="quote-section">
   <div class="quote-inner reveal">
     <div class="quote-mark">"</div>
-    <p class="quote-text">En ombudsmann er ikke til for systemet — men for menneskene systemet er til for.</p>
-    <div class="quote-attr">— Vårt grunnprinsipp</div>
+    <p class="quote-text">Jeg er ikke til for systemet — jeg er til for menneskene systemet er til for.</p>
+    <div class="quote-attr">— Thomas Idem, Ombudsmann</div>
   </div>
 </section>
+
 <footer class="contact" id="kontakt">
   <div class="contact-grid">
-    <div><div class="contact-brand-name">Ombudsmann</div><div class="contact-brand-tag">En stemme for hver enkelt.</div><p style="color:var(--ink-soft);font-size:0.9rem;line-height:1.7;max-width:320px">Uavhengig, lyttende, og forpliktet til å løfte frem saker som betyr noe.</p></div>
-    <div class="contact-block"><h4>Kontakt</h4><a href="mailto:post@ombudsmann.no">post@ombudsmann.no</a><a href="tel:+4700000000">+47 00 00 00 00</a><p>Man–Fre 09:00–16:00</p></div>
-    <div class="contact-block"><h4>Besøksadresse</h4><p>Storgata 1<br>0155 Oslo<br>Norge</p></div>
-    <div class="contact-block"><h4>Direkte</h4><a href="#forslag">Send forslag</a><a href="#hvordan">Slik jobber vi</a><a href="#">Personvern</a></div>
+    <div>
+      <div class="contact-brand-name">Thomas Idem</div>
+      <div class="contact-brand-role">Ombudsmann</div>
+      <p style="color:var(--ink-soft);font-size:0.9rem;line-height:1.7;max-width:300px">Uavhengig, lyttende, og forpliktet til å løfte frem sakene som betyr noe for deg.</p>
+    </div>
+    <div class="contact-block">
+      <h4>Kontakt Thomas</h4>
+      <a href="mailto:thomas@ombudsmann.no">thomas@ombudsmann.no</a>
+      <a href="tel:+4700000000">+47 00 00 00 00</a>
+      <p>Man–Fre 09:00–16:00</p>
+    </div>
+    <div class="contact-block">
+      <h4>Besøksadresse</h4>
+      <p>Storgata 1<br>0155 Oslo<br>Norge</p>
+    </div>
+    <div class="contact-block">
+      <h4>Direkte</h4>
+      <a href="#forslag">Send forslag</a>
+      <a href="#hvordan">Slik jobber jeg</a>
+      <a href="#">Personvern</a>
+    </div>
   </div>
-  <div class="copyright"><span>© 2026 Ombudsmann · Uavhengig instans</span><span>Bygget med omtanke</span></div>
+  <div class="copyright">
+    <span>© 2026 Thomas Idem · Ombudsmann</span>
+    <span>Personlig. Uavhengig. For deg.</span>
+  </div>
 </footer>
+
 <script>
   window.addEventListener('scroll', () => { document.getElementById('nav').classList.toggle('scrolled', window.scrollY > 30); });
   const observer = new IntersectionObserver(e => e.forEach(x => { if (x.isIntersecting) x.target.classList.add('visible'); }), { threshold: 0.12 });
