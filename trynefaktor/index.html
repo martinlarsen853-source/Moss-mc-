@@ -1,0 +1,871 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TRYNEFAKTOR — Premium Herrepleje</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+    :root{
+      --white:#FFFFFF;
+      --cream:#F7F4EF;
+      --sand:#EDE8DF;
+      --warm:#D4C5B0;
+      --green:#2A5C45;
+      --green-light:#3A7A5E;
+      --green-pale:#EBF2EE;
+      --gold:#B8966A;
+      --gold-light:#D4B48A;
+      --dark:#1C1917;
+      --mid:#6B6560;
+      --light:#9B938E;
+      --border:#E5DDD5;
+      --border-light:#EFE9E2;
+      --blue:#4A7AB5;
+      --r:2px;
+      --rl:8px;
+    }
+    html{scroll-behavior:smooth}
+    body{background:var(--white);color:var(--dark);font-family:'Inter',sans-serif;font-weight:400;line-height:1.6;overflow-x:hidden}
+
+    /* ── ANNOUNCEMENT ── */
+    .ann{background:var(--green);color:#fff;text-align:center;padding:10px 20px;font-size:11px;font-weight:500;letter-spacing:2px;text-transform:uppercase}
+    .ann a{color:#fff;text-decoration:underline;margin-left:8px}
+
+    /* ── NAVIGATION ── */
+    nav{position:sticky;top:0;z-index:1000;background:rgba(255,255,255,.97);backdrop-filter:blur(12px);border-bottom:1px solid var(--border-light);transition:box-shadow .3s}
+    nav.scrolled{box-shadow:0 2px 20px rgba(28,25,23,.08)}
+    .nav-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:flex;align-items:center;height:68px;gap:40px}
+    .nav-logo{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:600;color:var(--dark);text-decoration:none;letter-spacing:4px;text-transform:uppercase;flex-shrink:0}
+    .nav-logo small{display:block;color:var(--light);font-size:8px;letter-spacing:5px;font-family:'Inter',sans-serif;font-weight:400;margin-top:-3px}
+    .nav-cats{display:flex;gap:4px;flex:1;justify-content:center}
+    .nav-cat{position:relative}
+    .nav-cat>a{display:flex;align-items:center;gap:4px;color:var(--dark);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;padding:8px 14px;border-radius:var(--r);transition:color .2s}
+    .nav-cat>a:hover{color:var(--green)}
+    .nav-cat>a svg{width:10px;height:10px;stroke:currentColor;fill:none;stroke-width:2;transition:transform .2s}
+    .nav-cat:hover>a svg{transform:rotate(180deg)}
+    .nav-dropdown{position:absolute;top:calc(100% + 8px);left:50%;transform:translateX(-50%);background:var(--white);border:1px solid var(--border);border-radius:var(--rl);padding:20px;min-width:220px;display:none;box-shadow:0 12px 40px rgba(28,25,23,.1)}
+    .nav-cat:hover .nav-dropdown{display:block}
+    .nav-dropdown a{display:block;color:var(--mid);text-decoration:none;font-size:13px;padding:8px 12px;border-radius:var(--r);transition:background .15s,color .15s}
+    .nav-dropdown a:hover{background:var(--cream);color:var(--dark)}
+    .nav-right{display:flex;align-items:center;gap:4px;flex-shrink:0}
+    .nav-icon{background:none;border:none;cursor:pointer;color:var(--dark);padding:8px;border-radius:50%;display:flex;align-items:center;justify-content:center;transition:background .2s,color .2s}
+    .nav-icon:hover{background:var(--cream);color:var(--green)}
+    .nav-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;stroke-width:1.5}
+    .cart-btn{display:flex;align-items:center;gap:8px;background:var(--green);color:#fff;border:none;padding:9px 20px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;border-radius:2px;cursor:pointer;transition:background .2s;white-space:nowrap}
+    .cart-btn:hover{background:var(--green-light)}
+    .cart-count{background:#fff;color:var(--green);font-size:10px;font-weight:700;width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+
+    /* ── HERO ── */
+    .hero{min-height:90vh;display:grid;grid-template-columns:1fr 1fr;background:var(--cream);overflow:hidden}
+    .hero-content{display:flex;flex-direction:column;justify-content:center;padding:80px 60px 80px 80px}
+    .hero-badge{display:inline-flex;align-items:center;gap:8px;font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:28px}
+    .hero-badge::before{content:'';width:32px;height:1px;background:var(--green)}
+    .hero-title{font-family:'Cormorant Garamond',serif;font-size:clamp(52px,6vw,88px);font-weight:400;line-height:1;letter-spacing:1px;margin-bottom:28px;color:var(--dark)}
+    .hero-title em{color:var(--green);font-style:italic;display:block}
+    .hero-desc{color:var(--mid);font-size:15px;font-weight:300;max-width:420px;margin-bottom:44px;line-height:1.9}
+    .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:60px}
+    .btn-primary{background:var(--dark);color:#fff;border:none;padding:15px 38px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:background .2s;text-decoration:none;display:inline-block}
+    .btn-primary:hover{background:var(--green)}
+    .btn-outline{background:transparent;color:var(--dark);border:1px solid var(--dark);padding:15px 38px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .2s;text-decoration:none;display:inline-block}
+    .btn-outline:hover{border-color:var(--green);color:var(--green)}
+    .hero-stats{display:flex;gap:48px}
+    .stat-num{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:500;color:var(--dark);display:block;line-height:1}
+    .stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--light);margin-top:4px}
+    .hero-visual{position:relative;overflow:hidden;background:linear-gradient(135deg,var(--sand) 0%,var(--warm) 100%)}
+    .hero-visual-inner{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+    .hero-product-art{position:relative;width:320px;height:420px}
+
+    /* ── VALUES STRIP ── */
+    .values{background:var(--white);border-top:1px solid var(--border-light);border-bottom:1px solid var(--border-light);padding:24px 40px;display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
+    .val-item{display:flex;align-items:center;gap:12px}
+    .val-icon{width:36px;height:36px;background:var(--green-pale);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+    .val-icon svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:1.5}
+    .val-text{font-size:12px;font-weight:500;color:var(--dark);letter-spacing:.5px}
+    .val-sub{font-size:11px;color:var(--light);font-weight:300}
+
+    /* ── SECTION COMMONS ── */
+    .section{padding:80px 0}
+    .section-inner{max-width:1320px;margin:0 auto;padding:0 40px}
+    .section-top{display:flex;align-items:flex-end;justify-content:space-between;margin-bottom:40px}
+    .section-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:10px}
+    .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(28px,3.5vw,46px);font-weight:400;line-height:1.1;color:var(--dark)}
+    .section-title em{color:var(--green);font-style:italic}
+    .section-desc{font-size:13px;color:var(--mid);font-weight:300;margin-top:10px;max-width:400px;line-height:1.8}
+    .view-all{color:var(--dark);text-decoration:none;font-size:11px;font-weight:500;letter-spacing:1.5px;text-transform:uppercase;display:flex;align-items:center;gap:8px;border-bottom:1px solid var(--dark);padding-bottom:2px;transition:color .2s,border-color .2s;white-space:nowrap}
+    .view-all:hover{color:var(--green);border-color:var(--green)}
+    .view-all svg{width:14px;height:14px;stroke:currentColor;fill:none;stroke-width:1.5}
+
+    /* ── CAROUSEL ── */
+    .carousel-wrap{position:relative}
+    .carousel{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-ms-overflow-style:none;padding-bottom:4px}
+    .carousel::-webkit-scrollbar{display:none}
+    .carousel-btn{position:absolute;top:50%;transform:translateY(-50%);z-index:10;background:var(--white);border:1px solid var(--border);border-radius:50%;width:44px;height:44px;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 16px rgba(28,25,23,.1);transition:background .2s,box-shadow .2s}
+    .carousel-btn:hover{background:var(--green);border-color:var(--green);box-shadow:0 4px 20px rgba(42,92,69,.25)}
+    .carousel-btn:hover svg{stroke:#fff}
+    .carousel-btn svg{width:18px;height:18px;stroke:var(--dark);fill:none;stroke-width:2}
+    .carousel-btn-prev{left:-22px}
+    .carousel-btn-next{right:-22px}
+
+    /* ── PRODUCT CARD ── */
+    .prod-card{flex:0 0 calc(33.33% - 14px);scroll-snap-align:start;background:var(--white);border:1px solid var(--border-light);border-radius:var(--rl);overflow:hidden;cursor:pointer;transition:box-shadow .25s,transform .25s;position:relative}
+    .prod-card:hover{box-shadow:0 12px 40px rgba(28,25,23,.12);transform:translateY(-4px)}
+    .prod-img{height:240px;position:relative;overflow:hidden;display:flex;align-items:flex-end;justify-content:center;padding-bottom:20px}
+    .prod-img-art{position:absolute;inset:0}
+    .prod-wishlist{position:absolute;top:14px;right:14px;z-index:2;background:rgba(255,255,255,.9);border:none;cursor:pointer;width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 8px rgba(28,25,23,.1);transition:background .2s}
+    .prod-wishlist:hover{background:var(--white)}
+    .prod-wishlist svg{width:16px;height:16px;stroke:var(--mid);fill:none;stroke-width:1.5;transition:stroke .2s,fill .2s}
+    .prod-wishlist.active svg{stroke:#C0392B;fill:#C0392B}
+    .prod-badge{position:absolute;top:14px;left:14px;z-index:2;font-size:9px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;padding:4px 10px;border-radius:1px}
+    .badge-best{background:var(--dark);color:#fff}
+    .badge-new{background:var(--green);color:#fff}
+    .badge-pop{background:var(--gold);color:#fff}
+    .prod-info{padding:18px 20px 20px}
+    .prod-brand{font-size:9px;font-weight:600;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold);margin-bottom:6px}
+    .prod-name{font-family:'Cormorant Garamond',serif;font-size:17px;font-weight:500;color:var(--dark);margin-bottom:4px;line-height:1.3}
+    .prod-desc{font-size:12px;color:var(--light);font-weight:300;margin-bottom:10px;line-height:1.6;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .prod-rating{display:flex;align-items:center;gap:5px;margin-bottom:14px}
+    .stars{color:var(--gold);font-size:11px;letter-spacing:1px}
+    .rating-ct{font-size:11px;color:var(--light)}
+    .prod-footer{display:flex;align-items:center;justify-content:space-between}
+    .prod-price{font-family:'Cormorant Garamond',serif;font-size:22px;font-weight:500;color:var(--dark)}
+    .prod-price span{font-size:12px;color:var(--mid);font-family:'Inter',sans-serif;font-weight:400}
+    .add-btn{background:transparent;border:1px solid var(--border);color:var(--dark);padding:8px 18px;font-family:'Inter',sans-serif;font-size:10px;font-weight:600;letter-spacing:1.5px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:all .2s;white-space:nowrap}
+    .add-btn:hover{background:var(--dark);color:#fff;border-color:var(--dark)}
+    .add-btn.green-btn:hover{background:var(--green);border-color:var(--green)}
+
+    /* Product image art variations */
+    .art-wellness{background:linear-gradient(145deg,#EBF2EE 0%,#D4E8DC 60%,#B8D4C2 100%)}
+    .art-sun{background:linear-gradient(145deg,#FDF6E3 0%,#F5E6C0 60%,#E8D09A 100%)}
+    .art-shave{background:linear-gradient(145deg,#EEF2F5 0%,#D8E4EC 60%,#B8CCD8 100%)}
+    .art-kidz{background:linear-gradient(145deg,#EEF3FB 0%,#D6E4F5 60%,#B8D0F0 100%)}
+
+    /* ── EDITORIAL STRIP ── */
+    .editorial{background:var(--dark);color:#fff;padding:80px 0;overflow:hidden}
+    .editorial-inner{max-width:1320px;margin:0 auto;padding:0 40px;display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center}
+    .editorial-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:18px}
+    .editorial-title{font-family:'Cormorant Garamond',serif;font-size:clamp(32px,4vw,56px);font-weight:400;line-height:1.1;margin-bottom:24px;color:#fff}
+    .editorial-title em{color:var(--gold);font-style:italic}
+    .editorial-body{color:rgba(255,255,255,.65);font-size:15px;font-weight:300;line-height:1.9;margin-bottom:36px}
+    .editorial-stats{display:flex;gap:40px;margin-bottom:40px;padding-top:32px;border-top:1px solid rgba(255,255,255,.1)}
+    .edit-stat-num{font-family:'Cormorant Garamond',serif;font-size:36px;color:var(--gold)}
+    .edit-stat-label{font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:4px}
+    .editorial-btn{background:var(--gold);color:var(--dark);border:none;padding:15px 38px;font-family:'Inter',sans-serif;font-size:11px;font-weight:600;letter-spacing:2px;text-transform:uppercase;cursor:pointer;border-radius:var(--r);transition:background .2s;text-decoration:none;display:inline-block}
+    .editorial-btn:hover{background:var(--gold-light)}
+    .editorial-visual{position:relative;height:480px;border-radius:var(--rl);overflow:hidden}
+    .editorial-bg{position:absolute;inset:0;background:linear-gradient(135deg,var(--green) 0%,#1E4A35 100%);display:flex;align-items:center;justify-content:center}
+    .editorial-bottles{display:flex;gap:20px;align-items:flex-end;padding:40px}
+
+    /* ── NEWSLETTER ── */
+    .newsletter{background:var(--cream);padding:80px 0;text-align:center}
+    .newsletter-inner{max-width:560px;margin:0 auto;padding:0 40px}
+    .newsletter-label{font-size:10px;font-weight:500;letter-spacing:3px;text-transform:uppercase;color:var(--green);margin-bottom:16px}
+    .newsletter-title{font-family:'Cormorant Garamond',serif;font-size:40px;font-weight:400;margin-bottom:12px;color:var(--dark)}
+    .newsletter-title em{color:var(--green);font-style:italic}
+    .newsletter-desc{color:var(--mid);font-size:14px;font-weight:300;margin-bottom:36px;line-height:1.8}
+    .newsletter-form{display:flex;gap:10px;background:var(--white);border:1px solid var(--border);border-radius:2px;padding:6px 6px 6px 20px;align-items:center}
+    .newsletter-input{flex:1;background:none;border:none;outline:none;color:var(--dark);font-family:'Inter',sans-serif;font-size:14px;font-weight:300;min-width:0}
+    .newsletter-input::placeholder{color:var(--light)}
+    .newsletter-sub{font-size:11px;color:var(--light);margin-top:14px;font-weight:300}
+
+    /* ── FOOTER ── */
+    footer{background:var(--dark);color:#fff;padding:72px 0 28px}
+    .footer-inner{max-width:1320px;margin:0 auto;padding:0 40px}
+    .footer-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:60px;margin-bottom:60px}
+    .footer-logo{font-family:'Cormorant Garamond',serif;font-size:26px;font-weight:600;color:var(--gold);letter-spacing:3px;display:block;margin-bottom:14px;text-transform:uppercase}
+    .footer-brand p{color:rgba(255,255,255,.45);font-size:13px;font-weight:300;line-height:1.9;max-width:280px;margin-bottom:24px}
+    .social-links{display:flex;gap:10px}
+    .social-link{width:36px;height:36px;border:1px solid rgba(255,255,255,.15);border-radius:50%;display:flex;align-items:center;justify-content:center;color:rgba(255,255,255,.45);text-decoration:none;font-size:12px;font-weight:500;transition:all .2s}
+    .social-link:hover{border-color:var(--gold);color:var(--gold)}
+    .footer-col h4{font-size:9px;font-weight:600;letter-spacing:3px;text-transform:uppercase;color:var(--gold);margin-bottom:20px}
+    .footer-col ul{list-style:none;display:flex;flex-direction:column;gap:10px}
+    .footer-col a{color:rgba(255,255,255,.45);text-decoration:none;font-size:13px;font-weight:300;transition:color .2s}
+    .footer-col a:hover{color:#fff}
+    .footer-divider{border:none;border-top:1px solid rgba(255,255,255,.08);margin-bottom:28px}
+    .footer-bottom{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px}
+    .footer-bottom p{color:rgba(255,255,255,.3);font-size:11px}
+    .footer-legal{display:flex;gap:20px}
+    .footer-legal a{color:rgba(255,255,255,.3);text-decoration:none;font-size:11px;transition:color .2s}
+    .footer-legal a:hover{color:rgba(255,255,255,.7)}
+    .payment-icons{display:flex;gap:8px;align-items:center}
+    .pay-icon{background:rgba(255,255,255,.08);border-radius:4px;padding:4px 8px;font-size:10px;color:rgba(255,255,255,.4);font-weight:600;letter-spacing:.5px}
+
+    /* ── TOAST ── */
+    .toast{position:fixed;bottom:28px;right:28px;background:var(--dark);color:#fff;padding:14px 20px;border-radius:var(--rl);font-size:13px;font-weight:400;z-index:9999;transform:translateY(120px);opacity:0;transition:transform .35s cubic-bezier(.4,0,.2,1),opacity .35s;display:flex;align-items:center;gap:10px;max-width:300px;box-shadow:0 8px 32px rgba(28,25,23,.25)}
+    .toast.show{transform:translateY(0);opacity:1}
+    .toast-icon{width:20px;height:20px;background:var(--green);border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:11px}
+
+    /* ── MOBILE ── */
+    @media(max-width:1100px){
+      .carousel .prod-card{flex:0 0 calc(50% - 10px)}
+      .hero{grid-template-columns:1fr}
+      .hero-visual{display:none}
+      .editorial-inner{grid-template-columns:1fr}
+      .editorial-visual{display:none}
+      .footer-grid{grid-template-columns:1fr 1fr;gap:40px}
+    }
+    @media(max-width:768px){
+      .nav-inner{padding:0 20px;gap:20px}
+      .nav-cats{display:none}
+      .hero-content{padding:60px 24px}
+      .hero-stats{gap:28px;flex-wrap:wrap}
+      .section-inner{padding:0 24px}
+      .section{padding:60px 0}
+      .section-top{flex-direction:column;align-items:flex-start;gap:16px}
+      .values{gap:24px;padding:20px 24px;justify-content:flex-start;overflow-x:auto;flex-wrap:nowrap}
+      .carousel .prod-card{flex:0 0 280px}
+      .carousel-btn{display:none}
+      .newsletter-inner{padding:0 24px}
+      .newsletter-form{flex-direction:column;padding:12px}
+      .newsletter-input{text-align:center}
+      .footer-inner{padding:0 24px}
+      .footer-grid{grid-template-columns:1fr;gap:32px}
+      .footer-bottom{flex-direction:column;align-items:flex-start}
+      .editorial-inner{padding:0 24px}
+    }
+  </style>
+</head>
+<body>
+
+<!-- ANNOUNCEMENT -->
+<div class="ann">Gratis frakt på ordre over 499 kr &nbsp;·&nbsp; Kode: <strong>TRYNE20</strong> gir 20% på første ordre</div>
+
+<!-- NAVIGATION -->
+<nav id="nav">
+  <div class="nav-inner">
+    <a href="#" class="nav-logo">Trynefaktor<small>Premium Herrepleje</small></a>
+    <div class="nav-cats">
+      <div class="nav-cat">
+        <a href="#velvare">Velvære <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="#velvare">Ansiktskrem</a>
+          <a href="#velvare">Håndkrem</a>
+          <a href="#velvare">Serum</a>
+          <a href="#velvare">Nattkrem</a>
+        </div>
+      </div>
+      <div class="nav-cat">
+        <a href="#sol">Sol & Beskyttelse <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="#sol">Solkrem SPF 50+</a>
+          <a href="#sol">Ansiktsbeskyttelse</a>
+          <a href="#sol">After Sun</a>
+        </div>
+      </div>
+      <div class="nav-cat">
+        <a href="#barbering">Barbering <svg viewBox="0 0 10 6"><path d="M1 1l4 4 4-4"/></svg></a>
+        <div class="nav-dropdown">
+          <a href="#barbering">Barberskum</a>
+          <a href="#barbering">Skjeggolje</a>
+          <a href="#barbering">After Shave</a>
+        </div>
+      </div>
+      <div class="nav-cat">
+        <a href="#kidz">Kidz</a>
+      </div>
+    </div>
+    <div class="nav-right">
+      <button class="nav-icon" title="Søk" aria-label="Søk">
+        <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <button class="nav-icon" title="Ønskeliste" aria-label="Ønskeliste" onclick="showToast('Ønskeliste')">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+      </button>
+      <button class="cart-btn" onclick="openCart()">
+        <svg width="16" height="16" viewBox="0 0 24 24" stroke="#fff" fill="none" stroke-width="1.5"><path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/></svg>
+        Handlekurv
+        <span class="cart-count" id="cartCount">0</span>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-content">
+    <div class="hero-badge">Norsk Premium Pleje siden 2022</div>
+    <h1 class="hero-title">Ekte menn.<br><em>Ekte pleie.</em></h1>
+    <p class="hero-desc">Trynefaktor er det nordiske svaret på premium herrepleje — utviklet for menn som tar vare på huden sin uten å gjøre et nummer ut av det.</p>
+    <div class="hero-cta">
+      <a href="#velvare" class="btn-primary">Utforsk kolleksjonen</a>
+      <a href="#filosofi" class="btn-outline">Vår filosofi</a>
+    </div>
+    <div class="hero-stats">
+      <div><span class="stat-num">100%</span><div class="stat-label">Naturlig</div></div>
+      <div><span class="stat-num">4,9★</span><div class="stat-label">Kundesnitt</div></div>
+      <div><span class="stat-num">18K+</span><div class="stat-label">Kunder</div></div>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="hero-visual-inner">
+      <div class="hero-product-art">
+        <!-- Main bottle -->
+        <div style="position:absolute;width:140px;height:280px;background:linear-gradient(165deg,#3A7A5E,#1E4A35);border-radius:60px 60px 20px 20px;top:50%;left:50%;transform:translate(-50%,-50%);box-shadow:20px 30px 60px rgba(28,25,23,.3)"></div>
+        <div style="position:absolute;top:50%;left:50%;width:58px;height:28px;background:#1C1917;border-radius:4px 4px 0 0;transform:translate(-50%,-170px)"></div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-35px);width:88px;height:68px;border:1px solid rgba(255,255,255,.2);border-radius:3px;background:rgba(247,244,239,.12);display:flex;align-items:center;justify-content:center;text-align:center">
+          <span style="font-family:'Cormorant Garamond',serif;font-size:9px;color:rgba(255,255,255,.85);letter-spacing:2px;text-transform:uppercase;line-height:1.7;font-weight:500">Tryne<br>faktor</span>
+        </div>
+        <!-- Side bottle gold -->
+        <div style="position:absolute;width:98px;height:196px;background:linear-gradient(165deg,#D4B48A,#9A7040);border-radius:38px 38px 14px 14px;top:50%;right:8px;transform:translateY(-38%);box-shadow:15px 25px 50px rgba(28,25,23,.22)"></div>
+        <!-- Side bottle light -->
+        <div style="position:absolute;width:78px;height:156px;background:linear-gradient(165deg,#EDE8DF,#C8B89C);border-radius:30px 30px 12px 12px;top:50%;left:8px;transform:translateY(-28%);box-shadow:10px 20px 40px rgba(28,25,23,.15)"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VALUES STRIP -->
+<div class="values">
+  <div class="val-item">
+    <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg></div>
+    <div><div class="val-text">Norsk Kvalitet</div><div class="val-sub">Utviklet i Skandinavia</div></div>
+  </div>
+  <div class="val-item">
+    <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M17 8C8 10 5.9 16.17 3.82 21.09L5.71 22 7 19l1-.5C8 20 9 21 10 21c1 0 2-1 2-2 0-1-.5-2-1.5-2.5l2-3C14 15 16 13.5 17 8z"/></svg></div>
+    <div><div class="val-text">Naturlige Ingredienser</div><div class="val-sub">Uten unødvendige tilsetninger</div></div>
+  </div>
+  <div class="val-item">
+    <div class="val-icon"><svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 100 20A10 10 0 0012 2zm0 18a8 8 0 110-16 8 8 0 010 16zm3.5-9.5L11 15l-2.5-2.5 1.4-1.4L11 12.2l3.1-3.1 1.4 1.4z"/></svg></div>
+    <div><div class="val-text">Aldri Dyretestet</div><div class="val-sub">100% cruelty-free</div></div>
+  </div>
+  <div class="val-item">
+    <div class="val-icon"><svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2"/><path d="M16 8h4l3 3v5h-7V8zM5 21v-4"/></svg></div>
+    <div><div class="val-text">1–3 Dagers Levering</div><div class="val-sub">Rask og sikker frakt</div></div>
+  </div>
+</div>
+
+<!-- BESTSELLERS CAROUSEL -->
+<section class="section" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-top">
+      <div>
+        <div class="section-label">Anbefalt</div>
+        <h2 class="section-title">Bestselgere</h2>
+      </div>
+      <a href="#" class="view-all">Se alle <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('best',-1)" aria-label="Forrige">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel" id="best">
+        <div class="prod-card" onclick="addToCart('Daily Defense Ansiktskrem SPF 20',349)">
+          <div class="prod-img art-wellness">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Legg til ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-best">Bestselger</span>
+            <div style="position:relative;z-index:1;width:80px;height:160px;background:linear-gradient(165deg,#3A7A5E,#1E4A35);border-radius:30px 30px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Daily Defense Ansiktskrem SPF 20</div>
+            <div class="prod-desc">Lett dagskrem med innebygd solbeskyttelse</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(847)</span></div>
+            <div class="prod-footer">
+              <div class="prod-price">349 <span>kr</span></div>
+              <button class="add-btn green-btn" onclick="addToCart('Daily Defense Ansiktskrem SPF 20',349);event.stopPropagation()">+ Legg i kurv</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Arctic Shield SPF 50+',299)">
+          <div class="prod-img art-sun">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Legg til ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-best">Bestselger</span>
+            <div style="position:relative;z-index:1;width:80px;height:150px;background:linear-gradient(165deg,#D4A017,#9B7213);border-radius:28px 28px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor Sol</div>
+            <div class="prod-name">Arctic Shield SPF 50+</div>
+            <div class="prod-desc">Vår sterkeste solkrem — vanntett og usynlig</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(1 240)</span></div>
+            <div class="prod-footer">
+              <div class="prod-price">299 <span>kr</span></div>
+              <button class="add-btn green-btn" onclick="addToCart('Arctic Shield SPF 50+',299);event.stopPropagation()">+ Legg i kurv</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Precision Barberskum',199)">
+          <div class="prod-img art-shave">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Legg til ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-best">Bestselger</span>
+            <div style="position:relative;z-index:1;width:76px;height:170px;background:linear-gradient(165deg,#4A6880,#2A4860);border-radius:28px 28px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Precision Barberskum</div>
+            <div class="prod-desc">Rik kremete skum med mentol og eucalyptus</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(932)</span></div>
+            <div class="prod-footer">
+              <div class="prod-price">199 <span>kr</span></div>
+              <button class="add-btn green-btn" onclick="addToCart('Precision Barberskum',199);event.stopPropagation()">+ Legg i kurv</button>
+            </div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('HydroBoost Fuktighetsserum',479)">
+          <div class="prod-img art-wellness">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Legg til ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-new">Nyhet</span>
+            <div style="position:relative;z-index:1;width:62px;height:185px;background:linear-gradient(165deg,#5A8A72,#2A5C45);border-radius:24px 24px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">HydroBoost Fuktighetsserum</div>
+            <div class="prod-desc">Konsentrert hyaluronsyre og nordisk havtorn</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(631)</span></div>
+            <div class="prod-footer">
+              <div class="prod-price">479 <span>kr</span></div>
+              <button class="add-btn green-btn" onclick="addToCart('HydroBoost Fuktighetsserum',479);event.stopPropagation()">+ Legg i kurv</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('best',1)" aria-label="Neste">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 01: VELVÆRE -->
+<section class="section" id="velvare" style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-top">
+      <div>
+        <div class="section-label">Avdeling 01</div>
+        <h2 class="section-title">Velvære &amp; <em>Ansiktspleie</em></h2>
+        <p class="section-desc">Din hud, dine regler. Produkter som faktisk fungerer.</p>
+      </div>
+      <a href="#" class="view-all">Se alle <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('vel',-1)" aria-label="Forrige">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel" id="vel">
+        <div class="prod-card" onclick="addToCart('Daily Defense Ansiktskrem SPF 20',349)">
+          <div class="prod-img art-wellness">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-best">Bestselger</span>
+            <div style="position:relative;z-index:1;width:80px;height:160px;background:linear-gradient(165deg,#3A7A5E,#1E4A35);border-radius:30px 30px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Daily Defense Ansiktskrem SPF 20</div>
+            <div class="prod-desc">Lett dagskrem med innebygd solbeskyttelse</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(847)</span></div>
+            <div class="prod-footer"><div class="prod-price">349 <span>kr</span></div><button class="add-btn" onclick="addToCart('Daily Defense Ansiktskrem SPF 20',349);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Powergrip Håndkrem',229)">
+          <div class="prod-img art-wellness">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div style="position:relative;z-index:1;width:100px;height:130px;background:linear-gradient(165deg,#7AAA88,#4A7A5E);border-radius:50% 50% 10px 10px/30% 30% 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Powergrip Håndkrem</div>
+            <div class="prod-desc">Tung nok til å helbrede, lett nok hele dagen</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(412)</span></div>
+            <div class="prod-footer"><div class="prod-price">229 <span>kr</span></div><button class="add-btn" onclick="addToCart('Powergrip Håndkrem',229);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('HydroBoost Fuktighetsserum',479)">
+          <div class="prod-img art-wellness">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-new">Nyhet</span>
+            <div style="position:relative;z-index:1;width:62px;height:185px;background:linear-gradient(165deg,#5A8A72,#2A5C45);border-radius:24px 24px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">HydroBoost Fuktighetsserum</div>
+            <div class="prod-desc">Konsentrert hyaluronsyre og nordisk havtorn</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(631)</span></div>
+            <div class="prod-footer"><div class="prod-price">479 <span>kr</span></div><button class="add-btn" onclick="addToCart('HydroBoost Fuktighetsserum',479);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Night Recovery Nattkrem',449)">
+          <div class="prod-img art-wellness">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div style="position:relative;z-index:1;width:110px;height:110px;background:linear-gradient(145deg,#2A5C45,#1A3C2D);border-radius:50%;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Night Recovery Nattkrem</div>
+            <div class="prod-desc">Retinol og arganolje — la huden reparere seg</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(389)</span></div>
+            <div class="prod-footer"><div class="prod-price">449 <span>kr</span></div><button class="add-btn" onclick="addToCart('Night Recovery Nattkrem',449);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('vel',1)" aria-label="Neste">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- EDITORIAL -->
+<section class="editorial" id="filosofi">
+  <div class="editorial-inner">
+    <div>
+      <div class="editorial-label">Vår filosofi</div>
+      <h2 class="editorial-title">Laget for menn<br>som bryr seg<br>om <em>trynet sitt</em></h2>
+      <p class="editorial-body">Vi tror menn fortjener hudpleie som faktisk virker — uten unødvendig krem, parfyme eller forvirring. Alle Trynefaktor-produkter er utviklet i Skandinavia med naturlige ingredienser, uten dyretesting og uten kompromiss på effekt.</p>
+      <div class="editorial-stats">
+        <div><div class="edit-stat-num">100%</div><div class="edit-stat-label">Naturlig</div></div>
+        <div><div class="edit-stat-num">0</div><div class="edit-stat-label">Dyretesting</div></div>
+        <div><div class="edit-stat-num">4,9</div><div class="edit-stat-label">Stjerner snitt</div></div>
+      </div>
+      <a href="#velvare" class="editorial-btn">Se alle produkter</a>
+    </div>
+    <div class="editorial-visual">
+      <div class="editorial-bg">
+        <div class="editorial-bottles">
+          <div style="width:80px;height:200px;background:linear-gradient(165deg,#D4B48A,#9A7040);border-radius:30px 30px 10px 10px;box-shadow:0 20px 50px rgba(0,0,0,.4)"></div>
+          <div style="width:110px;height:260px;background:linear-gradient(165deg,#4A8A68,#2A5C45);border-radius:40px 40px 14px 14px;box-shadow:0 20px 50px rgba(0,0,0,.5)"></div>
+          <div style="width:70px;height:170px;background:linear-gradient(165deg,#EDE8DF,#C8B89C);border-radius:26px 26px 10px 10px;box-shadow:0 20px 50px rgba(0,0,0,.3)"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 02: SOL -->
+<section class="section" id="sol" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-top">
+      <div>
+        <div class="section-label">Avdeling 02</div>
+        <h2 class="section-title">Sol &amp; <em>Beskyttelse</em></h2>
+        <p class="section-desc">Solen er rå. Beskytt deg smart.</p>
+      </div>
+      <a href="#" class="view-all">Se alle <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('sol',-1)" aria-label="Forrige">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel" id="sol">
+        <div class="prod-card" onclick="addToCart('Arctic Shield SPF 50+',299)">
+          <div class="prod-img art-sun">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-best">Bestselger</span>
+            <div style="position:relative;z-index:1;width:80px;height:150px;background:linear-gradient(165deg,#D4A017,#9B7213);border-radius:28px 28px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor Sol</div>
+            <div class="prod-name">Arctic Shield SPF 50+</div>
+            <div class="prod-desc">Vår sterkeste solkrem — vanntett og usynlig</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(1 240)</span></div>
+            <div class="prod-footer"><div class="prod-price">299 <span>kr</span></div><button class="add-btn" onclick="addToCart('Arctic Shield SPF 50+',299);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Face Protect SPF 50',279)">
+          <div class="prod-img art-sun">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div style="position:relative;z-index:1;width:90px;height:140px;background:linear-gradient(165deg,#E8B830,#B08820);border-radius:32px 32px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor Sol</div>
+            <div class="prod-name">Face Protect SPF 50</div>
+            <div class="prod-desc">Full UVA/UVB-beskyttelse for ansiktet</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(743)</span></div>
+            <div class="prod-footer"><div class="prod-price">279 <span>kr</span></div><button class="add-btn" onclick="addToCart('Face Protect SPF 50',279);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('After Sun Recovery',199)">
+          <div class="prod-img art-sun">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div style="position:relative;z-index:1;width:100px;height:130px;background:linear-gradient(165deg,#F0C84A,#C09820);border-radius:50% 50% 10px 10px/30% 30% 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor Sol</div>
+            <div class="prod-name">After Sun Recovery</div>
+            <div class="prod-desc">Aloe vera og nordisk bjørkevann — avkjøler huden</div>
+            <div class="prod-rating"><span class="stars">★★★★☆</span><span class="rating-ct">(298)</span></div>
+            <div class="prod-footer"><div class="prod-price">199 <span>kr</span></div><button class="add-btn" onclick="addToCart('After Sun Recovery',199);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('sol',1)" aria-label="Neste">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 03: BARBERING -->
+<section class="section" id="barbering" style="background:var(--cream)">
+  <div class="section-inner">
+    <div class="section-top">
+      <div>
+        <div class="section-label">Avdeling 03</div>
+        <h2 class="section-title">Barbering &amp; <em>Grooming</em></h2>
+        <p class="section-desc">Ritualet du fortjener. Skarpt og enkelt.</p>
+      </div>
+      <a href="#" class="view-all">Se alle <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('barb',-1)" aria-label="Forrige">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel" id="barb">
+        <div class="prod-card" onclick="addToCart('Precision Barberskum',199)">
+          <div class="prod-img art-shave">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-best">Bestselger</span>
+            <div style="position:relative;z-index:1;width:76px;height:170px;background:linear-gradient(165deg,#4A6880,#2A4860);border-radius:28px 28px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Precision Barberskum</div>
+            <div class="prod-desc">Rik kremete skum med mentol og eucalyptus</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(932)</span></div>
+            <div class="prod-footer"><div class="prod-price">199 <span>kr</span></div><button class="add-btn" onclick="addToCart('Precision Barberskum',199);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Nordic Forest Skjeggolje',279)">
+          <div class="prod-img art-shave">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-new">Nyhet</span>
+            <div style="position:relative;z-index:1;width:60px;height:160px;background:linear-gradient(165deg,#607890,#3A5A70);border-radius:22px 22px 8px 8px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Nordic Forest Skjeggolje</div>
+            <div class="prod-desc">Gjør skjegget bløtt, stylt og duftende</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(334)</span></div>
+            <div class="prod-footer"><div class="prod-price">279 <span>kr</span></div><button class="add-btn" onclick="addToCart('Nordic Forest Skjeggolje',279);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Recovery After Shave',229)">
+          <div class="prod-img art-shave">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div style="position:relative;z-index:1;width:100px;height:125px;background:linear-gradient(165deg,#8AA0B8,#5A7890);border-radius:50% 50% 10px 10px/30% 30% 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand">Trynefaktor</div>
+            <div class="prod-name">Recovery After Shave</div>
+            <div class="prod-desc">Ingen svie, ingen rødhet — roer og hydrerer</div>
+            <div class="prod-rating"><span class="stars">★★★★★</span><span class="rating-ct">(445)</span></div>
+            <div class="prod-footer"><div class="prod-price">229 <span>kr</span></div><button class="add-btn" onclick="addToCart('Recovery After Shave',229);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('barb',1)" aria-label="Neste">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- SECTION 04: KIDZ -->
+<section class="section" id="kidz" style="background:var(--white)">
+  <div class="section-inner">
+    <div class="section-top">
+      <div>
+        <div class="section-label" style="color:var(--blue)">Avdeling 04</div>
+        <h2 class="section-title">Trynefaktor <em style="color:var(--blue)">Kidz</em></h2>
+        <p class="section-desc">Mildere — laget for sensitiv barnehud.</p>
+      </div>
+      <a href="#" class="view-all">Se alle <svg viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+    </div>
+    <div class="carousel-wrap">
+      <button class="carousel-btn carousel-btn-prev" onclick="scrollCarousel('kidz',-1)" aria-label="Forrige">
+        <svg viewBox="0 0 24 24"><path d="M15 18l-6-6 6-6"/></svg>
+      </button>
+      <div class="carousel" id="kidz">
+        <div class="prod-card" onclick="addToCart('Kidz Sol SPF 50+ Sensitive',249)">
+          <div class="prod-img art-kidz">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-pop">Populær</span>
+            <div style="position:relative;z-index:1;width:80px;height:155px;background:linear-gradient(165deg,#4A7AB5,#2A5A95);border-radius:28px 28px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand" style="color:var(--blue)">Trynefaktor Kidz</div>
+            <div class="prod-name">Kidz Sol SPF 50+ Sensitive</div>
+            <div class="prod-desc">Ultramild solkrem for sensitiv barnehud</div>
+            <div class="prod-rating"><span class="stars" style="color:var(--blue)">★★★★★</span><span class="rating-ct">(543)</span></div>
+            <div class="prod-footer"><div class="prod-price">249 <span>kr</span></div><button class="add-btn" style="border-color:var(--blue);color:var(--blue)" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--blue)'" onclick="addToCart('Kidz Sol SPF 50+ Sensitive',249);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Kidz Daily Fuktighetslotion',199)">
+          <div class="prod-img art-kidz">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <div style="position:relative;z-index:1;width:96px;height:125px;background:linear-gradient(165deg,#6A9BD5,#3A6AAA);border-radius:50% 50% 10px 10px/30% 30% 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand" style="color:var(--blue)">Trynefaktor Kidz</div>
+            <div class="prod-name">Kidz Daily Fuktighetslotion</div>
+            <div class="prod-desc">Lett, luktfri og superrask å absorbere</div>
+            <div class="prod-rating"><span class="stars" style="color:var(--blue)">★★★★★</span><span class="rating-ct">(312)</span></div>
+            <div class="prod-footer"><div class="prod-price">199 <span>kr</span></div><button class="add-btn" style="border-color:var(--blue);color:var(--blue)" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--blue)'" onclick="addToCart('Kidz Daily Fuktighetslotion',199);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+        <div class="prod-card" onclick="addToCart('Kidz After Sun Kul-Lotion',179)">
+          <div class="prod-img art-kidz">
+            <div class="prod-img-art"></div>
+            <button class="prod-wishlist" onclick="toggleWish(this);event.stopPropagation()" aria-label="Ønskeliste"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+            <span class="prod-badge badge-new">Nyhet</span>
+            <div style="position:relative;z-index:1;width:72px;height:165px;background:linear-gradient(165deg,#5A8AD5,#2A5AAA);border-radius:26px 26px 10px 10px;box-shadow:8px 14px 32px rgba(28,25,23,.2)"></div>
+          </div>
+          <div class="prod-info">
+            <div class="prod-brand" style="color:var(--blue)">Trynefaktor Kidz</div>
+            <div class="prod-name">Kidz After Sun Kul-Lotion</div>
+            <div class="prod-desc">Kjøler ned og reparerer med aloe og kamille</div>
+            <div class="prod-rating"><span class="stars" style="color:var(--blue)">★★★★★</span><span class="rating-ct">(189)</span></div>
+            <div class="prod-footer"><div class="prod-price">179 <span>kr</span></div><button class="add-btn" style="border-color:var(--blue);color:var(--blue)" onmouseover="this.style.background='var(--blue)';this.style.color='#fff'" onmouseout="this.style.background='transparent';this.style.color='var(--blue)'" onclick="addToCart('Kidz After Sun Kul-Lotion',179);event.stopPropagation()">+ Legg i kurv</button></div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-btn carousel-btn-next" onclick="scrollCarousel('kidz',1)" aria-label="Neste">
+        <svg viewBox="0 0 24 24"><path d="M9 18l6-6-6-6"/></svg>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- NEWSLETTER -->
+<section class="newsletter">
+  <div class="newsletter-inner">
+    <div class="newsletter-label">Hold deg oppdatert</div>
+    <h2 class="newsletter-title">Bli en<br><em>Insider</em></h2>
+    <p class="newsletter-desc">Eksklusive tilbud, grooming-tips og nyheter fra Trynefaktor. Aldri spam.</p>
+    <form class="newsletter-form" onsubmit="subscribeNewsletter(event)">
+      <input type="email" class="newsletter-input" placeholder="din@epost.no" required>
+      <button type="submit" class="btn-primary" style="border-radius:1px;padding:13px 28px">Meld meg på</button>
+    </form>
+    <p class="newsletter-sub">Du kan melde deg av når som helst. Vi deler aldri din e-post.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <span class="footer-logo">Trynefaktor</span>
+        <p>Premium herrepleje fra Skandinavia — laget for menn som bryr seg om hva de putter på trynet.</p>
+        <div class="social-links">
+          <a href="#" class="social-link" aria-label="Instagram">IG</a>
+          <a href="#" class="social-link" aria-label="Facebook">FB</a>
+          <a href="#" class="social-link" aria-label="TikTok">TT</a>
+          <a href="#" class="social-link" aria-label="YouTube">YT</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Avdelinger</h4>
+        <ul>
+          <li><a href="#velvare">Velvære &amp; Ansiktspleie</a></li>
+          <li><a href="#sol">Sol &amp; Beskyttelse</a></li>
+          <li><a href="#barbering">Barbering &amp; Grooming</a></li>
+          <li><a href="#kidz">Trynefaktor Kidz</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kundeservice</h4>
+        <ul>
+          <li><a href="#">Kontakt oss</a></li>
+          <li><a href="#">Frakt &amp; Levering</a></li>
+          <li><a href="#">Returpolicy</a></li>
+          <li><a href="#">FAQ</a></li>
+          <li><a href="#">Størrelsesguide</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Om oss</h4>
+        <ul>
+          <li><a href="#filosofi">Vår filosofi</a></li>
+          <li><a href="#">Ingredienser</a></li>
+          <li><a href="#">Bærekraft</a></li>
+          <li><a href="#">Presse</a></li>
+        </ul>
+      </div>
+    </div>
+    <hr class="footer-divider">
+    <div class="footer-bottom">
+      <p>&copy; 2025 Trynefaktor AS — Alle rettigheter forbeholdt</p>
+      <div class="payment-icons">
+        <span class="pay-icon">VISA</span>
+        <span class="pay-icon">MC</span>
+        <span class="pay-icon">Vipps</span>
+        <span class="pay-icon">Klarna</span>
+      </div>
+      <div class="footer-legal">
+        <a href="#">Personvern</a>
+        <a href="#">Vilkår</a>
+        <a href="#">Informasjonskapsler</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <div class="toast-icon">✓</div>
+  <span id="toastMsg">Lagt til!</span>
+</div>
+
+<script>
+  var cc=0,ct=0;
+
+  function addToCart(n,p){
+    cc++;ct+=p;
+    document.getElementById('cartCount').textContent=cc;
+    showToast(n+' — '+p+' kr lagt i kurven');
+  }
+
+  function openCart(){
+    showToast(cc===0?'Handlekurven er tom':cc+' varer · Total: '+ct+' kr');
+  }
+
+  function toggleWish(btn){
+    btn.classList.toggle('active');
+    var active=btn.classList.contains('active');
+    showToast(active?'Lagt til ønskeliste':'Fjernet fra ønskeliste');
+  }
+
+  function showToast(m){
+    var t=document.getElementById('toast');
+    document.getElementById('toastMsg').textContent=m;
+    t.classList.add('show');
+    clearTimeout(t._t);
+    t._t=setTimeout(function(){t.classList.remove('show');},3000);
+  }
+
+  function subscribeNewsletter(e){
+    e.preventDefault();
+    showToast('Velkommen som Trynefaktor Insider!');
+    e.target.reset();
+  }
+
+  function scrollCarousel(id,dir){
+    var el=document.getElementById(id);
+    var card=el.querySelector('.prod-card');
+    var w=card?(card.offsetWidth+20):320;
+    el.scrollBy({left:dir*w*2,behavior:'smooth'});
+  }
+
+  window.addEventListener('scroll',function(){
+    var nav=document.getElementById('nav');
+    nav.classList.toggle('scrolled',window.scrollY>10);
+  });
+</script>
+</body>
+</html>
