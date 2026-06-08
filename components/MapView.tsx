@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { Loader } from "@googlemaps/js-api-loader";
+import { setOptions, importLibrary } from "@googlemaps/js-api-loader";
 import { Pub, PUBS, getNearestPubs } from "@/lib/pubs";
 import BottomSheet from "./BottomSheet";
 import PubDetailCard from "./PubDetailCard";
@@ -20,15 +20,14 @@ export default function MapView() {
     const apiKey = process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY;
     if (!apiKey) return;
 
-    const loader = new Loader({ apiKey, version: "weekly" });
+    setOptions({ key: apiKey, v: "weekly" });
 
-    loader.load().then(async () => {
-      const { Map } = (await google.maps.importLibrary(
-        "maps"
-      )) as google.maps.MapsLibrary;
-      const { AdvancedMarkerElement } = (await google.maps.importLibrary(
-        "marker"
-      )) as google.maps.MarkerLibrary;
+    Promise.all([
+      importLibrary("maps"),
+      importLibrary("marker"),
+    ]).then(([mapsLib, markerLib]) => {
+      const { Map } = mapsLib;
+      const { AdvancedMarkerElement } = markerLib;
 
       if (!mapRef.current) return;
 
