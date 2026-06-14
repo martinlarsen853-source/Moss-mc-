@@ -1,7 +1,9 @@
 import Anthropic from '@anthropic-ai/sdk';
 import { COACH_BRAIN } from './coach-brain';
 
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+function getAnthropic() {
+  return new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+}
 
 export interface CoachContext {
   type: string;
@@ -16,7 +18,7 @@ export interface CoachContext {
 
 export async function askCoach(context: CoachContext): Promise<string> {
   const userMessage = buildUserMessage(context);
-  const response = await anthropic.messages.create({
+  const response = await getAnthropic().messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 400,
     system: COACH_BRAIN,
@@ -27,7 +29,7 @@ export async function askCoach(context: CoachContext): Promise<string> {
 }
 
 export async function analyzeFood(imageBase64: string, mimeType: string): Promise<{ description: string; kcal: number; protein_g: number; carbs_g: number; fat_g: number; confidence: 'high' | 'medium' | 'low'; }> {
-  const response = await anthropic.messages.create({
+  const response = await getAnthropic().messages.create({
     model: 'claude-sonnet-4-6',
     max_tokens: 300,
     messages: [{
