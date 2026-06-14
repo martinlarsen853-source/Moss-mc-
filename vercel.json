@@ -1,0 +1,11 @@
+{
+  "buildCommand": "cd coach-app && npm install && npm run build",
+  "outputDirectory": "coach-app/.next",
+  "framework": "nextjs",
+  "installCommand": "echo 'deps handled in buildCommand'",
+  "crons": [
+    { "path": "/api/sync-interval", "schedule": "*/15 * * * *" },
+    { "path": "/api/cron/pre-workout", "schedule": "0 * * * *" },
+    { "path": "/api/cron/weekly-check", "schedule": "0 15 * * 4,5" }
+  ]
+}
