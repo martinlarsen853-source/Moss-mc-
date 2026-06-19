@@ -1,0 +1,22 @@
+import { NextResponse } from 'next/server';
+import { createAdminClient } from '@/lib/supabase-server';
+
+export async function POST(req: Request) {
+  const { endpoint, keys } = await req.json();
+  if (!endpoint || !keys?.p256dh || !keys?.auth) {
+    return NextResponse.json({ error: 'Invalid subscription' }, { status: 400 });
+  }
+  const supabase = createAdminClient();
+  await supabase.from('push_subscriptions').upsert(
+    { endpoint, p256dh: keys.p256dh, auth: keys.auth },
+    { onConflict: 'endpoint' }
+  );
+  return NextResponse.json({ ok: true });
+}
+
+export async function DELETE(req: Request) {
+  const { endpoint } = await req.json();
+  const supabase = createAdminClient();
+  await supabase.from('push_subscriptions').delete().eq('endpoint', endpoint);
+  return NextResponse.json({ ok: true });
+}
