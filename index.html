@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Moss MC – Motorsykkelklubb i Moss, Norge. Fellesskap, frihet og lidenskap for veien." />
-  <title>Moss MC</title>
+  <meta name="description" content="FlowCreate – PIM, lagerstyring og AI-berikelse i én flyt. Importer produkter, berik med AI og publiser til alle kanaler." />
+  <title>FlowCreate – Produktdata i flyt</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
 </head>
 <body>
@@ -16,195 +16,226 @@
   <nav class="nav" id="nav">
     <div class="nav__inner">
       <a href="#hero" class="nav__logo">
-        <span class="nav__logo-text">MOSS</span>
-        <span class="nav__logo-mc">MC</span>
+        <span class="nav__logo-mark">◍</span>
+        <span class="nav__logo-text">Flow<span class="accent">Create</span></span>
       </a>
       <ul class="nav__links" id="navLinks">
-        <li><a href="#om-oss" class="nav__link">Om oss</a></li>
-        <li><a href="#bli-medlem" class="nav__link">Bli medlem</a></li>
-        <li><a href="#kontakt" class="nav__link">Kontakt</a></li>
+        <li><a href="#slik-virker-det" class="nav__link">Slik virker det</a></li>
+        <li><a href="#funksjoner" class="nav__link">Funksjoner</a></li>
+        <li><a href="#integrasjoner" class="nav__link">Integrasjoner</a></li>
+        <li><a href="#priser" class="nav__link">Priser</a></li>
+        <li><a href="#kontakt" class="nav__link nav__link--cta">Kom i gang</a></li>
       </ul>
       <button class="nav__hamburger" id="hamburger" aria-label="Åpne meny" aria-expanded="false">
-        <span></span>
-        <span></span>
-        <span></span>
+        <span></span><span></span><span></span>
       </button>
     </div>
   </nav>
 
   <!-- HERO -->
-  <section class="hero" id="hero">
-    <div class="hero__bg"></div>
-    <div class="hero__overlay"></div>
-    <div class="hero__content">
-      <p class="hero__eyebrow reveal">Moss, Norge — Est. 1972</p>
+  <header class="hero" id="hero">
+    <div class="hero__glow" aria-hidden="true"></div>
+    <div class="container hero__content">
+      <p class="hero__eyebrow reveal">PIM + lager + AI + publisering</p>
       <h1 class="hero__title reveal">
-        BRODER&shy;SKAP<br />PÅ TO <span class="gold">HJUL</span>
+        Produktdata i <span class="gradient-text">én flyt</span>
       </h1>
       <p class="hero__subtitle reveal">
-        Vi er ikke bare en klubb. Vi er et fellesskap av mennesker som deler<br class="hide-mobile" />
-        lidenskap for frihet, veien og hverandre.
+        FlowCreate kombinerer PIM, lagerstyring, AI-berikelse og kanalpublisering i én
+        automatisert flyt – med kvalitetsporter, konfidensscore og godkjenning før publisering.
       </p>
       <div class="hero__actions reveal">
-        <a href="#bli-medlem" class="btn btn--primary">Bli medlem</a>
-        <a href="#om-oss" class="btn btn--ghost">Les mer</a>
+        <a href="#kontakt" class="btn btn--primary">Prøv gratis</a>
+        <a href="#slik-virker-det" class="btn btn--ghost">Se hvordan det virker</a>
       </div>
+      <p class="hero__note reveal">Gratisplan med 25 credits per måned – ingen kort nødvendig</p>
     </div>
-    <div class="hero__scroll-indicator">
-      <span></span>
-    </div>
-  </section>
-
-  <!-- STATS BANNER -->
-  <section class="stats">
-    <div class="container">
-      <div class="stats__grid">
-        <div class="stat reveal">
-          <span class="stat__number">50+</span>
-          <span class="stat__label">Aktive medlemmer</span>
+    <div class="container reveal">
+      <div class="flow-diagram" aria-label="Flyten i FlowCreate">
+        <div class="flow-node">
+          <span class="flow-node__icon">⇲</span>
+          <span class="flow-node__title">Importer</span>
+          <span class="flow-node__desc">Butikk, feed, CSV, bilder</span>
         </div>
-        <div class="stat__divider"></div>
-        <div class="stat reveal">
-          <span class="stat__number">52</span>
-          <span class="stat__label">År på veien</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node">
+          <span class="flow-node__icon">✦</span>
+          <span class="flow-node__title">Berik med AI</span>
+          <span class="flow-node__desc">Titler, beskrivelser, attributter</span>
         </div>
-        <div class="stat__divider"></div>
-        <div class="stat reveal">
-          <span class="stat__number">100+</span>
-          <span class="stat__label">Turer i året</span>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node">
+          <span class="flow-node__icon">✓</span>
+          <span class="flow-node__title">Kvalitetssikre</span>
+          <span class="flow-node__desc">Konfidensscore og godkjenning</span>
         </div>
-        <div class="stat__divider"></div>
-        <div class="stat reveal">
-          <span class="stat__number">1</span>
-          <span class="stat__label">Broderskapets hjem</span>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- OM OSS -->
-  <section class="section om-oss" id="om-oss">
-    <div class="container">
-      <div class="om-oss__grid">
-        <div class="om-oss__visual reveal">
-          <div class="om-oss__emblem">
-            <div class="emblem__ring"></div>
-            <div class="emblem__inner">
-              <span class="emblem__top">MOSS</span>
-              <span class="emblem__mc">MC</span>
-              <span class="emblem__bottom">NORGE</span>
-            </div>
-          </div>
-          <div class="om-oss__badge reveal">
-            <span>Siden 1972</span>
-          </div>
-        </div>
-        <div class="om-oss__text">
-          <p class="section__eyebrow reveal">Vår historie</p>
-          <h2 class="section__title reveal">
-            Mer enn<br /><span class="gold">en klubb</span>
-          </h2>
-          <div class="divider reveal"></div>
-          <p class="om-oss__body reveal">
-            Moss MC ble stiftet i 1972 av en gruppe lidenskapelige motorsykkelentusiaster som ønsket å skape et fellesskap basert på respekt, lojalitet og kjærligheten til veien.
-          </p>
-          <p class="om-oss__body reveal">
-            Gjennom mer enn fem tiår har vi vokst til å bli en av de mest respekterte MC-klubbene på Østlandet. Vi arrangerer turer, sosiale sammenkomster og er aktive bidragsytere i lokalmiljøet i Moss.
-          </p>
-          <ul class="om-oss__values reveal">
-            <li>
-              <span class="value__icon">◆</span>
-              <span><strong>Lojalitet</strong> – Vi stiller opp for hverandre</span>
-            </li>
-            <li>
-              <span class="value__icon">◆</span>
-              <span><strong>Respekt</strong> – For veien, for kjøretøyet, for brødrene</span>
-            </li>
-            <li>
-              <span class="value__icon">◆</span>
-              <span><strong>Frihet</strong> – Det åpne veien representerer</span>
-            </li>
-          </ul>
+        <span class="flow-arrow" aria-hidden="true">→</span>
+        <div class="flow-node">
+          <span class="flow-node__icon">⇱</span>
+          <span class="flow-node__title">Publiser</span>
+          <span class="flow-node__desc">Alle kanaler, samtidig</span>
         </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- SITAT -->
-  <section class="quote-section">
-    <div class="container">
-      <blockquote class="quote reveal">
-        <p class="quote__text">
-          "Fire hjul beveger kroppen.<br />To hjul beveger sjelen."
-        </p>
-        <cite class="quote__cite">— Moss MC</cite>
-      </blockquote>
-    </div>
-  </section>
-
-  <!-- BLI MEDLEM -->
-  <section class="section bli-medlem" id="bli-medlem">
+  <!-- SLIK VIRKER DET -->
+  <section class="section" id="slik-virker-det">
     <div class="container">
       <div class="section__header text-center">
-        <p class="section__eyebrow reveal">Veien inn</p>
-        <h2 class="section__title reveal">Bli en av oss</h2>
-        <div class="divider divider--center reveal"></div>
+        <p class="section__eyebrow reveal">Slik virker det</p>
+        <h2 class="section__title reveal">Fra rådata til salgsklare produkter</h2>
         <p class="section__intro reveal">
-          Vi ser etter mennesker som deler våre verdier. Prosessen er enkel,<br class="hide-mobile" />
-          men fellesskapet varer livet ut.
+          Hele reisen automatiseres – du beholder kontrollen med kvalitetsporter underveis.
         </p>
       </div>
-      <div class="steps reveal">
-        <div class="step">
+      <div class="steps">
+        <div class="step reveal">
           <div class="step__number">01</div>
-          <div class="step__content">
-            <h3 class="step__title">Ta kontakt</h3>
-            <p class="step__desc">Send oss en melding eller møt opp på et av våre arrangementer. Fortell oss hvem du er og hva som driver deg.</p>
-          </div>
+          <h3 class="step__title">Importer fra hvor som helst</h3>
+          <p class="step__desc">Hent produkter fra WooCommerce og Shopify via API, produktfeeds (XML/CSV/JSON), leverandør-CSV, bildeopplasting fra mobil eller markedsplasser som eBay.</p>
         </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step__number">02</div>
-          <div class="step__content">
-            <h3 class="step__title">Bli kjent</h3>
-            <p class="step__desc">Du inviteres til klubbtreff og turer som prøvemedlem. Vi lærer hverandre å kjenne uten press.</p>
-          </div>
+          <h3 class="step__title">AI bygger innholdet</h3>
+          <p class="step__desc">FlowCreate genererer titler, beskrivelser, attributter, kategorier og tilstand automatisk – tilpasset hver enkelt kanal.</p>
         </div>
-        <div class="step__arrow">→</div>
-        <div class="step">
+        <div class="step reveal">
           <div class="step__number">03</div>
-          <div class="step__content">
-            <h3 class="step__title">Velkommen inn</h3>
-            <p class="step__desc">Etter en prøveperiode og godkjenning av klubben tas du opp som fullverdig medlem av Moss MC.</p>
-          </div>
+          <h3 class="step__title">Kvalitetsporter og godkjenning</h3>
+          <p class="step__desc">Hvert produkt får en konfidensscore. Alt under terskelen stoppes for manuell gjennomgang – ingenting publiseres uten at det holder mål.</p>
+        </div>
+        <div class="step reveal">
+          <div class="step__number">04</div>
+          <h3 class="step__title">Publiser til alle kanaler</h3>
+          <p class="step__desc">Push ferdige produkter til nettbutikk og markedsplasser i én operasjon, med lagerstatus som holdes synkronisert.</p>
         </div>
       </div>
-      <div class="text-center reveal">
-        <a href="#kontakt" class="btn btn--primary btn--large">Send søknad</a>
+    </div>
+  </section>
+
+  <!-- FUNKSJONER -->
+  <section class="section section--alt" id="funksjoner">
+    <div class="container">
+      <div class="section__header text-center">
+        <p class="section__eyebrow reveal">Funksjoner</p>
+        <h2 class="section__title reveal">Alt du trenger, ett system</h2>
       </div>
+      <div class="features">
+        <div class="feature reveal">
+          <span class="feature__icon">▤</span>
+          <h3 class="feature__title">PIM + IMS i ett</h3>
+          <p class="feature__desc">Produktinformasjon og lagerstyring i samme system – én sannhetskilde for hele katalogen.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature__icon">✦</span>
+          <h3 class="feature__title">AI-berikelse</h3>
+          <p class="feature__desc">Automatisk genererte titler, beskrivelser og attributter av høy kvalitet, på sekunder.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature__icon">◎</span>
+          <h3 class="feature__title">Konfidensscore</h3>
+          <p class="feature__desc">Hvert felt scores. Du ser nøyaktig hva AI-en er trygg på – og hva som bør sjekkes.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature__icon">⛨</span>
+          <h3 class="feature__title">Kvalitetsporter</h3>
+          <p class="feature__desc">Definer regler for hva som må være på plass før et produkt slipper gjennom til publisering.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature__icon">⇄</span>
+          <h3 class="feature__title">Kanalpublisering</h3>
+          <p class="feature__desc">Publiser til flere salgskanaler samtidig, med innhold tilpasset hver kanals krav.</p>
+        </div>
+        <div class="feature reveal">
+          <span class="feature__icon">▣</span>
+          <h3 class="feature__title">Mobilopplasting</h3>
+          <p class="feature__desc">Ta bilder med mobilen – FlowCreate identifiserer produktet og bygger annonsen for deg.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- INTEGRASJONER -->
+  <section class="section" id="integrasjoner">
+    <div class="container">
+      <div class="section__header text-center">
+        <p class="section__eyebrow reveal">Integrasjoner</p>
+        <h2 class="section__title reveal">Koblet til der du selger</h2>
+        <p class="section__intro reveal">Importer fra og publiser til plattformene du allerede bruker.</p>
+      </div>
+      <div class="logos reveal">
+        <span class="logo-chip">WooCommerce</span>
+        <span class="logo-chip">Shopify</span>
+        <span class="logo-chip">eBay</span>
+        <span class="logo-chip">XML / CSV / JSON-feeds</span>
+        <span class="logo-chip">Leverandør-CSV</span>
+        <span class="logo-chip">Bilde / mobil</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRISER -->
+  <section class="section section--alt" id="priser">
+    <div class="container">
+      <div class="section__header text-center">
+        <p class="section__eyebrow reveal">Priser</p>
+        <h2 class="section__title reveal">Start gratis, voks i eget tempo</h2>
+      </div>
+      <div class="pricing">
+        <div class="price-card reveal">
+          <h3 class="price-card__name">Gratis</h3>
+          <p class="price-card__price">0 kr<span>/mnd</span></p>
+          <ul class="price-card__list">
+            <li>25 credits per måned</li>
+            <li>AI-berikelse</li>
+            <li>Import fra feed og CSV</li>
+            <li>1 salgskanal</li>
+          </ul>
+          <a href="#kontakt" class="btn btn--ghost btn--full">Kom i gang</a>
+        </div>
+        <div class="price-card price-card--featured reveal">
+          <span class="price-card__badge">Mest populær</span>
+          <h3 class="price-card__name">Pro</h3>
+          <p class="price-card__price">Fra 490 kr<span>/mnd</span></p>
+          <ul class="price-card__list">
+            <li>Flere credits og produkter</li>
+            <li>Alle importkilder inkl. API</li>
+            <li>Flere salgskanaler</li>
+            <li>Kvalitetsporter og team-godkjenning</li>
+          </ul>
+          <a href="#kontakt" class="btn btn--primary btn--full">Prøv Pro</a>
+        </div>
+        <div class="price-card reveal">
+          <h3 class="price-card__name">Enterprise</h3>
+          <p class="price-card__price">Ta kontakt</p>
+          <ul class="price-card__list">
+            <li>Ubegrenset volum</li>
+            <li>Skreddersydde integrasjoner</li>
+            <li>SLA og dedikert støtte</li>
+            <li>Onboarding og opplæring</li>
+          </ul>
+          <a href="#kontakt" class="btn btn--ghost btn--full">Kontakt oss</a>
+        </div>
+      </div>
+      <p class="pricing__note text-center reveal">Priser er veiledende – kontakt oss for et tilbud tilpasset din katalog.</p>
     </div>
   </section>
 
   <!-- KONTAKT -->
-  <section class="section kontakt" id="kontakt">
+  <section class="section" id="kontakt">
     <div class="container">
       <div class="kontakt__grid">
         <div class="kontakt__info">
-          <p class="section__eyebrow reveal">Kom i kontakt</p>
-          <h2 class="section__title reveal">La oss høre fra deg</h2>
-          <div class="divider reveal"></div>
+          <p class="section__eyebrow reveal">Kom i gang</p>
+          <h2 class="section__title reveal">Se FlowCreate i praksis</h2>
           <p class="kontakt__text reveal">
-            Har du spørsmål om klubben, ønsker å bli med, eller bare vil si hei? Vi svarer alltid.
+            Legg igjen kontaktinfo, så viser vi deg hvordan katalogen din kan gå fra rådata
+            til publiserte produkter – helt automatisk.
           </p>
           <ul class="kontakt__details reveal">
-            <li>
-              <span class="kontakt__icon">◈</span>
-              <span>Moss, Viken, Norge</span>
-            </li>
-            <li>
-              <span class="kontakt__icon">◈</span>
-              <a href="mailto:post@moss.mc.no">post@moss.mc.no</a>
-            </li>
+            <li><span class="kontakt__icon">◈</span><a href="mailto:hei@flowcreate.no">hei@flowcreate.no</a></li>
+            <li><span class="kontakt__icon">◈</span><span>Norge</span></li>
           </ul>
         </div>
         <form class="kontakt__form reveal" id="contactForm" novalidate>
@@ -218,9 +249,9 @@
           </div>
           <div class="form__group">
             <label for="melding" class="form__label">Melding</label>
-            <textarea id="melding" name="melding" class="form__input form__textarea" placeholder="Hva vil du si?" rows="5" required></textarea>
+            <textarea id="melding" name="melding" class="form__input form__textarea" placeholder="Fortell oss kort om katalogen din" rows="5" required></textarea>
           </div>
-          <button type="submit" class="btn btn--primary btn--full">Send melding</button>
+          <button type="submit" class="btn btn--primary btn--full">Be om demo</button>
           <p class="form__success" id="formSuccess">Takk! Vi tar kontakt snart.</p>
         </form>
       </div>
@@ -231,20 +262,21 @@
   <footer class="footer">
     <div class="container">
       <div class="footer__top">
-        <a href="#hero" class="footer__logo">
-          <span class="nav__logo-text">MOSS</span>
-          <span class="nav__logo-mc">MC</span>
+        <a href="#hero" class="nav__logo">
+          <span class="nav__logo-mark">◍</span>
+          <span class="nav__logo-text">Flow<span class="accent">Create</span></span>
         </a>
         <nav class="footer__nav" aria-label="Footer navigasjon">
-          <a href="#om-oss" class="footer__link">Om oss</a>
-          <a href="#bli-medlem" class="footer__link">Bli medlem</a>
+          <a href="#slik-virker-det" class="footer__link">Slik virker det</a>
+          <a href="#funksjoner" class="footer__link">Funksjoner</a>
+          <a href="#priser" class="footer__link">Priser</a>
           <a href="#kontakt" class="footer__link">Kontakt</a>
         </nav>
       </div>
       <div class="footer__divider"></div>
       <div class="footer__bottom">
-        <p class="footer__copy">&copy; 2024 Moss MC. Alle rettigheter forbeholdt.</p>
-        <p class="footer__tagline">Brødreskap på to hjul.</p>
+        <p class="footer__copy">&copy; 2026 FlowCreate. Alle rettigheter forbeholdt.</p>
+        <p class="footer__tagline">Produktdata i flyt.</p>
       </div>
     </div>
   </footer>
